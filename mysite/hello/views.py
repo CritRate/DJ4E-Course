@@ -8,6 +8,6 @@ def index(request):
     if count > 4:
         count = 0
     request.session['count'] = count
-    response = HttpResponse(f'view_count={count}')
+    response = HttpResponse(f'view count={count}')
     response.set_cookie('dj4e_cookie', 'eed4435e', max_age=1000)
     return response
