@@ -1,8 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import HttpResponse
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from django.urls import reverse_lazy
-from django
 
 from .models import Cat, Breed
 
