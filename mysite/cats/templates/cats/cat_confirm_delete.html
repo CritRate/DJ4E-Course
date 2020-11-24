@@ -1,0 +1,11 @@
+{% extends 'base_bootstrap.html' %}
+
+
+{% block content %}
+    <form action="" method="POST">
+    {% csrf_token %}
+    <h1>Delete Cat</h1>
+        <p>Are you sure you want to delete the cat: {{ cat }}?</p>
+    <button type="submit">Yes, delete</button>
+    </form>
+{% endblock %}
