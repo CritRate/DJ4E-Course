@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'rest_framework', 
     'social_django',  
     'home.apps.HomeConfig',
+
+    'ads.apps.AdsConfig'
 ]
 
 # When we get to crispy forms :)
@@ -63,7 +65,7 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',   # Add
 ]
 
-ROOT_URLCONF = 'dj4e-samples.urls'
+ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
@@ -84,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'dj4e-samples.wsgi.application'
+WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # Database
@@ -151,7 +153,7 @@ try:
     SOCIAL_AUTH_GITHUB_KEY = github_settings.SOCIAL_AUTH_GITHUB_KEY
     SOCIAL_AUTH_GITHUB_SECRET = github_settings.SOCIAL_AUTH_GITHUB_SECRET
 except:
-    print('When you want to use social login, please see dj4e-samples/github_settings-dist.py')
+    print('When you want to use social login, please see mysite/github_settings-dist.py')
 
 # https://python-social-auth.readthedocs.io/en/latest/configuration/django.html#authentication-backends
 # https://simpleisbetterthancomplex.com/tutorial/2016/10/24/how-to-add-social-login-to-django.html
