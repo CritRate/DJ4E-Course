@@ -20,7 +20,7 @@
 {#{% endblock %}#}
 
 
-{% extends "base_bootstrap.html" %}
+{% extends "base_menu.html" %}
 {% load crispy_forms_tags %}
 {% load humanize %} <!-- https://docs.djangoproject.com/en/3.0/ref/contrib/humanize -->
 {% block head %}
@@ -60,23 +60,27 @@
         {{ ad.text }}
     </p>
     <p>
-        {% if user.is_authenticated %}
-            <form action="{% url 'ads:ad_comment_create' ad.id %}" method="POST">
-                {% csrf_token %}
-                {{ comment_form|crispy }}
-                <input type="submit" value="Submit">
-                <input type="submit" value="All Ads" onclick="window.location.href='{% url 'ads:all' %}';return false;">
-            </form>
-        {% endif %}
+        Price: ${{ ad.price }}
     </p>
-    <p>
-        {% for comment in comments %}
-            <p> {{ comment.text }}
-            ({{ comment.updated_at|naturaltime }})
-            {% if user == comment.owner %}
-                <a href="{% url 'ads:ad_comment_delete' comment.id %}"><i class="fa fa-trash"></i></a>
-            {% endif %}
-        {% endfor %}
-        <a href="{% url 'ads:all' %}">All pics</a>
-        </p>
+
+    {% if user.is_authenticated %}
+        <form action="{% url 'ads:ad_comment_create' ad.id %}" method="POST">
+            {% csrf_token %}
+            {{ comment_form|crispy }}
+            <input type="submit" value="Submit">
+            <input type="submit" value="All Ads" onclick="window.location.href='{% url 'ads:all' %}';return false;">
+        </form>
+    {% endif %}
+    <br>
+
+    {% for comment in comments %}
+        <p>{{ comment.text }}
+        ({{ comment.updated_at|naturaltime }})
+        {% if user == comment.owner %}
+            <a href="{% url 'ads:ad_comment_delete' comment.id %}"><i class="fa fa-trash"></i></a>
+            </p>
+        {% endif %}
+    {% endfor %}
+    <a href="{% url 'ads:all' %}">All pics</a>
+
 {% endblock %}
